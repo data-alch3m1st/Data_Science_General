@@ -69,6 +69,10 @@ df.info()
 def convert_columns_to_int64(df, columns):
     for col in columns:
         df[col] = pd.to_numeric(df[col], errors='coerce').astype('int64')
+        
+        
+# Example usage - on strings in Etherscan data:
+convert_columns_to_int64(df, ['blockNumber', 'transactionIndex', 'gasUsed', 'gasPrice', 'cumulativeGasUsed', 'confirmations'])
 
 # ----------------------------------------------------------------------------------------------- #
 
