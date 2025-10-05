@@ -7,5 +7,34 @@
     
     P.S. "Choose not thy thugg-lyfe and/or or bedevilment, but per chance a path less eville." - Me
     """
-    
+
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
+
 # Misc pandas 🐼🐼🐼 to live by # 
+# ----------------------------------------------------------------------------------------------- #
+
+# Datetime ops
+
+# Convert a UNIX datetime to a datetime64[ns] in pandas (useful in Etherscan and Kaiko datasets;)
+df['datetime'] = pd.to_datetime(df['unix_timestamp'], unit='ms')
+
+# Then take the newly created
+df.set_index('datetime', inplace=True).sort_index(ascending=True, inplace=True)
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Float decimal points (several options n trix)
+
+pd.options.display.float_format = '{:.2f}'.format  # Set global float format to 2 decimal places
+
+df['column_name'] = df['column_name'].round(4)  # Round specific column to 4 decimal places
+
+df['column_name'] = df['column_name'].apply(lambda x: ':,.4f').format # Format specific column to 4 decimal places as string
+
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+
