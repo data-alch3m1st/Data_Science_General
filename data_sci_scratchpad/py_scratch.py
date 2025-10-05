@@ -20,8 +20,15 @@
 # Convert a UNIX datetime to a datetime64[ns] in pandas (useful in Etherscan and Kaiko datasets;)
 df['datetime'] = pd.to_datetime(df['unix_timestamp'], unit='ms')
 
-# Then take the newly created
+# Then take the newly created 'datetime' column and set it as the index, and sort the index in ascending order ;)
 df.set_index('datetime', inplace=True).sort_index(ascending=True, inplace=True)
+
+# Set an obj to datetime and round to nearest minute
+dt['datetime'] = pd.to_datetime(dt['datetime']).dt.round('min')
+
+# Set an obj to datetime and round to nearest day
+dt['datetime'] = pd.to_datetime(dt['datetime']).dt.round('D')
+
 
 # ----------------------------------------------------------------------------------------------- #
 
@@ -33,8 +40,54 @@ df['column_name'] = df['column_name'].round(4)  # Round specific column to 4 dec
 
 df['column_name'] = df['column_name'].apply(lambda x: ':,.4f').format # Format specific column to 4 decimal places as string
 
+# Set a float to something ridiculously small, like 10^-12 (useful in sh*tcoin datasets;)
+df['price'] = df['price'].astype(float).round(12)
+
+# ----------------------------------------------------------------------------------------------- #
+
+# Multi-column conversion functions
+
+# Convert multiple columns to float (two options)
+# Option1
+def convert_columns_to_float(df, columns):
+    for col in columns:
+        df[col] = df[col].astype(float)
+    return df
+
+# Option2
+def convert_columns_to_float(df, columns):
+    for col in columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce').astype(float)
+        
+# Sample usage:
+convert_columns_to_float(df, ['col1', 'col2', 'col3'])
+df.info()
+
+
+
+# Convert multi-columns to int64:
+def convert_columns_to_int64(df, columns):
+    for col in columns:
+        df[col] = pd.to_numeric(df[col], errors='coerce').astype('int64')
+
+# ----------------------------------------------------------------------------------------------- #
+
+
 
 
 # ----------------------------------------------------------------------------------------------- #
 
 
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+
+
+
+# ----------------------------------------------------------------------------------------------- #
+
+
+
+
+# ----------------------------------------------------------------------------------------------- #
