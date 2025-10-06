@@ -29,7 +29,10 @@ dt['datetime'] = pd.to_datetime(dt['datetime']).dt.round('min')
 # Set an obj to datetime and round to nearest day
 dt['datetime'] = pd.to_datetime(dt['datetime']).dt.round('D')
 
+# Moar datetime ops:
+df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S.%f')  # Convert to (e.g.) '2024-10-01 12:34:56.789123' format
 
+df['datetime'] = pd.to_datetime(df['transaction_created_at'], utc=True).dt.tz_convert(None)  # Convert to UTC datetime
 # ----------------------------------------------------------------------------------------------- #
 
 # Float decimal points (several options n trix)
