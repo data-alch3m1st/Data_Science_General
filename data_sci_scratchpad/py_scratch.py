@@ -73,15 +73,51 @@ def convert_columns_to_int64(df, columns):
         
 # Example usage - on strings in Etherscan data:
 convert_columns_to_int64(df, ['blockNumber', 'transactionIndex', 'gasUsed', 'gasPrice', 'cumulativeGasUsed', 'confirmations'])
+print(df.info())
+df.head(3)
+# ----------------------------------------------------------------------------------------------- #
+
+# Hex conversions!
+
+# This function is for string SLICES from longer hex strings (e.g., eventLogs, etc.) {NOTE: must not be a '0x' prefix!}
+
+def hex_to_string(hex_input):
+    try:
+        return bytes.fromhex(hex_input).decode('utf-8')
+    except ValueError:
+        return "Invalid hex input"
+    
+# Example usage:
+# Step 1: slice the portion of the long hex string for conversion;
+df['raw_dest_addr_hex'] = df['data'].str[578:646]  # Slice the hex string
+
+# Step 2: apply the function and check .value_counts() or .head() on the df to make sure the output is coherent;
+df['trx_dest_addr'] = df['raw_dest_addr_hex'].apply(hex_to_string)
+df['trx_dest_addr'].value_counts()
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Hex to int:
 
+#Option 1 (Pythonic version):
+def hex_to_int(hex_str):
+    try:
+        return int(hex_str, 16)
+    except ValueError:
+        return "Invalid hex input"  # or handle the error as needed
 
+# Example usage:
+df['blockNumber_int'] = df['blockNumber'].apply(hex_to_int)
 
-# ----------------------------------------------------------------------------------------------- #
+# Option 2a (Lambda version ~ for single use cases):
+hex_to_int = lambda x: int(x, 16)
+# Example usage:
+hex_to_int('F4240')
 
-
+# Option 2B (Lambda version ~ in a df; with a check for '0x' prefix):
+hex_to_int = lambda x: int(x, 16) if isinstance(x, str) and x.startswith('0x') else None
+# Example usage:
+df['blockNumber_int'] = df['blockNumber'].apply(hex_to_int)
 
 
 # ----------------------------------------------------------------------------------------------- #
