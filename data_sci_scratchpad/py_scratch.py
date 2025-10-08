@@ -141,7 +141,16 @@ df['column_name'].isnull().any()
 
 
 # ----------------------------------------------------------------------------------------------- #
+# Dealing with NaNs, nulls, etc.:
 
+# Neat little function to calculate, ratio and tabulate nulls for data cleaning:
+
+def missing_percentage(df):
+    
+    total = df.isnull().sum().sort_values(ascending=False)
+    percent = round(df.isnull().sum().sort_values(ascending=False)/len(df)*100,2)
+    
+    return pd.concat([total, percent], axis=1, keys=['Total', 'Percent'])
 
 
 
