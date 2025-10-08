@@ -155,3 +155,23 @@ def missing_percentage(df):
 
 
 # ----------------------------------------------------------------------------------------------- #
+
+# Nice little function:
+
+"""This function takes in a dataframe and a column 
+    and finds the percentage of the value_counts"""
+
+def percent_value_counts(df, feature):
+    
+    percent = pd.DataFrame(
+        round(df.loc[:,feature].value_counts(
+            dropna=False, normalize=True)*100,2))
+
+    ## creating a df with th
+    total = pd.DataFrame(
+        df.loc[:,feature].value_counts(dropna=False))
+
+    ## concating percent and total dataframe
+    total.columns = ["Total"]
+    percent.columns = ['Percent']
+    return pd.concat([total, percent], axis = 1)
