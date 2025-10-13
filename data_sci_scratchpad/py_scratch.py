@@ -139,6 +139,33 @@ df['column_name'].isna().any()
 df['column_name'].isnull().any()
 
 
+# ----------------------------------------------------------------------------------------------- #
+# Non-statistical normalization of strings (e.g., column names):
+
+# Normalizing column names to lowercase and replacing spaces with underscores:
+df.columns = df.columns.str.lower().str.replace(' ', '_')
+
+# Normalizing column names of trading pairs (e.g., 'BTC/USD' to 'btc-usd'):
+import re
+
+# option 1 
+def normalize_trading_pair(trading_pair):
+    return re.sub(r'/', '-', trading_pair.lower())
+
+# Example usage:
+df.columns = [normalize_trading_pair(col) for col in df.columns]
+
+# or 
+
+df['instrument'] = df['trading_pair'].apply(normalize_trading_pair)
+
+# option 2
+def normalize_trading_pair(col_name):
+    col_name = col_name.lower()  # Convert to lowercase
+    col_name = re.sub(r'[^a-z0-9]', '-', col_name)  # Replace non-alphanumeric chars with hyphen
+    col_name = re.sub(r'-+', '-', col_name)  # Replace multiple hyphens with single hyphen
+    col_name = col_name.strip('-')  # Remove leading/trailing hyphens
+    return col_name 
 
 # ----------------------------------------------------------------------------------------------- #
 # Dealing with NaNs, nulls, etc.:
