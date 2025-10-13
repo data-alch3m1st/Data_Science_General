@@ -138,6 +138,9 @@ df['column_name'].isna().any()
 # or
 df['column_name'].isnull().any()
 
+# dropnas
+df2 = df.replace(to_replace=[None], value=np.nan).dropna()
+
 
 # ----------------------------------------------------------------------------------------------- #
 # Non-statistical normalization of strings (e.g., column names):
@@ -224,8 +227,16 @@ df.rename(
 
 # ----------------------------------------------------------------------------------------------- #
 
+# mapping to json (specifically for Kaiko data w/ dictionary of exchange names and their codes saved as 'exch_dict_all.json'):
 
+import json
 
+with open('exch_dict_all.json', 'r') as f:
+    exch_dict = json.load(f)
+
+# Example usage:
+df['exchange_name'] = df['exchange'].map(exch_dict)
+df.head(3)
 
 # ----------------------------------------------------------------------------------------------- #
 
