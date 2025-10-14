@@ -250,7 +250,7 @@ import re
 pattern_evm_wallet = r'\b0x[a-fA-F0-9]{40}\b'
 pattern_btc_wallet = r'\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}|\b[bB][cC]1[pPqP][a-zA-Z0-9]{38,58}'
 pattern_tron_wallet = r'T[a-zA-Z0-9]{33}'
-pattern_sol_wallet = r'\b(?=.*[1-9A-HJ-NP-Za-km-z])([1-9A-HJ-NP-Za-km-z]{32,44})\b'
+pattern_sol_wallet = r'\b(?=.*[1-9A-HJ-NP-Za-km-z])([1-9A-HJ-NP-Za-km-z]{32,44})\b' # Need to double check and validate this in testing;
 
 
 def find_regex_matches(df, pattern):
@@ -265,7 +265,11 @@ def find_regex_matches(df, pattern):
     matched_rows = df[df.apply(row_contains_pattern, axis=1)]
     return matched_rows
 
+# Example usage:
+results_evm_df = find_regex_matches(df, pattern_evm_wallet)
 
+# Optional - save results to csv:
+results_evm_df.to_csv('evm_wallet_matches.csv', index=False)
 
 
 # ----------------------------------------------------------------------------------------------- #
