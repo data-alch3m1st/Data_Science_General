@@ -239,6 +239,28 @@ df['exchange_name'] = df['exchange'].map(exch_dict)
 df.head(3)
 
 # ----------------------------------------------------------------------------------------------- #
+# RegEx #
+
+# Finding crypto addresses in dataframe strings (BTC, ETH, TRON, SOL, etc.):
+import pandas as pd
+import numpy as np
+import re
+
+# Example patterns:
+
+
+
+def find_regex_matches(df, pattern):
+    # Compile the regex pattern
+    regex = re.compile(pattern)
+    
+    # Function to check if the pattern exists in any cell in a row:
+    def row_contains_pattern(row):
+        return any(regex.search(str(cell)) for cell in row)
+    
+    # Filter the dataframe to keep ONLY rows that contain the pattern:
+    matched_rows = df[df.apply(row_contains_pattern, axis=1)]
+    return matched_rows
 
 
 
