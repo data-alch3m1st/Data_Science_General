@@ -247,7 +247,10 @@ import numpy as np
 import re
 
 # Example patterns:
-
+pattern_evm_wallet = r'\b0x[a-fA-F0-9]{40}\b'
+pattern_btc_wallet = r'\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}|\b[bB][cC]1[pPqP][a-zA-Z0-9]{38,58}'
+pattern_tron_wallet = r'T[a-zA-Z0-9]{33}'
+pattern_sol_wallet = r'\b(?=.*[1-9A-HJ-NP-Za-km-z])([1-9A-HJ-NP-Za-km-z]{32,44})\b'
 
 
 def find_regex_matches(df, pattern):
