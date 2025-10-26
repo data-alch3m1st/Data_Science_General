@@ -16,6 +16,7 @@
 # ----------------------------------------------------------------------------------------------- #
 
 # Datetime ops
+from datetime import datetime
 
 # Convert a UNIX datetime to a datetime64[ns] in pandas (useful in Etherscan and Kaiko datasets;)
 df['datetime'] = pd.to_datetime(df['unix_timestamp'], unit='ms')
@@ -33,6 +34,26 @@ dt['datetime'] = pd.to_datetime(dt['datetime']).dt.round('D')
 df['datetime'] = pd.to_datetime(df['datetime'], format='%Y-%m-%d %H:%M:%S.%f')  # Convert to (e.g.) '2024-10-01 12:34:56.789123' format
 
 df['datetime'] = pd.to_datetime(df['transaction_created_at'], utc=True).dt.tz_convert(None)  # Convert to UTC datetime
+
+
+# datetime for saving files/ experiments/ etc. with timestamps
+# Set up a 'saved_models' directory (if it doesnt already exist):
+from datetime import datetime
+
+save_dir = "saved_models"
+os.makedirs(save_dir, exist_ok=True)  # creates it if it doesn't exist
+
+# Add the current date to the filename
+current_date = datetime.now().strftime("%Y%m%d")
+model_save_path = os.path.join(save_dir, f"efficientnet_b0_pizza_steak_sushi_{current_date}.pth")
+
+# Can easily adjust the '.now' output for more/ less granularity, diff't formats, etc.:
+# e.g., for a current date/time of 2025-10-24 15:30 (local):
+datetime.now().strftime("%Y%m%d") # '20251024'
+datetime.now().strftime("%Y-%m-%d") # '2025-10-24'
+datetime.now().strftime("%Y%m%d_%H%M") # '20251024_1530'
+datetime.now().strftime("%Y%m%d-%H%ML") # '20251024-1530L' (with 'L' appended for local time)
+
 # ----------------------------------------------------------------------------------------------- #
 
 # Float decimal points (several options n trix)
