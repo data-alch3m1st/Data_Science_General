@@ -294,7 +294,23 @@ results_evm_df.to_csv('evm_wallet_matches.csv', index=False)
 
 
 # ----------------------------------------------------------------------------------------------- #
+# Globbing-Globlins #
 
+# To grab specified rows/headers from the first tab in a sheet, for every excel file in a given directory, and concatenate them into a single dataframe:
+
+import glob
+import pandas as pd
+
+path = './test/*.xlsx'  # Adjust the path and file extension as needed
+
+combined_data = pd.DataFrame()
+
+for file in glob.glob(path):
+    df = pd.read_excel(file, header=3, nrows=2, usecols="A:H") # Adjust parameters as needed
+    combined_data = pd.concat([combined_data, df], ignore_index=True)
+    
+print(combined_data.info())
+combined_data.head(10)
 
 
 
