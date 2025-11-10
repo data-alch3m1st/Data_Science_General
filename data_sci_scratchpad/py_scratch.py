@@ -315,8 +315,16 @@ combined_data.head(10)
 
 
 # ----------------------------------------------------------------------------------------------- #
+# Clearing the cache in PyTorch #
 
+# Example: When you're using a custom helper script, which you have modifed in real-time, and you need to clear and reload latest version is loaded (instead of a cached version):
 
+import importlib
+from helper_scripts import t0rch_h3lp3r_0x01
+importlib.reload(t0rch_h3lp3r_0x01)
+from helper_scripts.t0rch_h3lp3r_0x01 import plot_training_curves
+
+# ^^^ In the above, I updated a few lines in the 'plot_training_curves' function in the 't0rch_h3lp3r_0x01.py' script, and wanted to implement the changes without starting over (and retraining a model from scratch!)
 
 
 # ----------------------------------------------------------------------------------------------- #
