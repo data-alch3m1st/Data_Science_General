@@ -54,6 +54,28 @@ datetime.now().strftime("%Y-%m-%d") # '2025-10-24'
 datetime.now().strftime("%Y%m%d_%H%M") # '20251024_1530'
 datetime.now().strftime("%Y%m%d-%H%ML") # '20251024-1530L' (with 'L' appended for local time)
 
+# date string to UNIX timestamp at midnight function #
+
+from datetime import datetime, timezone
+
+# Define the function
+def date_to_unix_midnight(date_string):
+
+    try:
+        date_obj = datetime.strptime(date_string, '%Y-%m-%d')
+        
+        # Set the timezone to UTC (UNIX time is based on UTC)
+        date_obj = date_obj.replace(tzinfo=timezone.utc)
+        
+        # Convert the datetime object to a UNIX timestamp
+        unix_timestamp = int(date_obj.timestamp())
+        
+        return unix_timestamp
+
+    except ValueError:
+        # Handle invalid date format
+        raise ValueError("Invalid date format. Please use 'yyyy-mm-dd'.") 
+
 # ----------------------------------------------------------------------------------------------- #
 
 # Float decimal points (several options n trix)
