@@ -76,6 +76,15 @@ def date_to_unix_midnight(date_string):
         # Handle invalid date format
         raise ValueError("Invalid date format. Please use 'yyyy-mm-dd'.") 
 
+
+# Custom function to convert the 'birthdate' (if a string or some other non-datetime format) column into a datetime variable type:
+
+def date_formatter(date):
+
+
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
+
 # ----------------------------------------------------------------------------------------------- #
 
 # Float decimal points (several options n trix)
@@ -314,9 +323,11 @@ results_evm_df = find_regex_matches(df, pattern_evm_wallet)
 # Optional - save results to csv:
 results_evm_df.to_csv('evm_wallet_matches.csv', index=False)
 
-
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # Globbing-Globlins #
+# ----------------------------------------------------------------------------------------------- #
 
 # To grab specified rows/headers from the first tab in a sheet, for every excel file in a given directory, and concatenate them into a single dataframe:
 
@@ -334,8 +345,17 @@ for file in glob.glob(path):
 print(combined_data.info())
 combined_data.head(10)
 
+# ----------------------------------------------------------------------------------------------- #
 
 
+
+
+
+
+
+
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # Clearing the cache in PyTorch #
 
