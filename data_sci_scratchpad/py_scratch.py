@@ -80,6 +80,14 @@ def date_to_unix_midnight(date_string):
 # Custom function to convert the 'birthdate' (if a string or some other non-datetime format) column into a datetime variable type:
 
 def date_formatter(date):
+    '''takes a string (or other non-dt obj)and converts into a datetime object'''
+    date_str = str(date)  # Ensure the input is a string
+    if date_str.find('-') > -1:
+        return pd.to_datetime(date_str, format='%Y-%m-%d') 
+    elif date_str.find('/') > -1:
+        return pd.to_datetime(date_str, format='%m/%d/%Y')
+    else :
+        return pd.to_datetime(np.nan)  # Return NaN for unrecognized formats
 
 
 # ----------------------------------------------------------------------------------------------- #
