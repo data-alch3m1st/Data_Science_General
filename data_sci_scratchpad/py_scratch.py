@@ -83,9 +83,9 @@ def date_formatter(date):
     '''takes a string (or other non-dt obj)and converts into a datetime object'''
     date_str = str(date)  # Ensure the input is a string
     if date_str.find('-') > -1:
-        return pd.to_datetime(date_str, format='%Y-%m-%d') 
+        return pd.to_datetime(date_str, format='%Y-%m-%d') # Adjust format as needed (this is YYYY-MM-DD)
     elif date_str.find('/') > -1:
-        return pd.to_datetime(date_str, format='%m/%d/%Y')
+        return pd.to_datetime(date_str, format='%m/%d/%Y') # Adjust format as needed (this is MM/DD/YYYY)
     else :
         return pd.to_datetime(np.nan)  # Return NaN for unrecognized formats
 
