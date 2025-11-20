@@ -342,9 +342,19 @@ df[df.apply(lambda row: row.astype(str).str.contains(search_term, case=False).an
 # EXAMPLE 1b:
 df[df.apply(lambda row: row.str.contains(search_term).any(), axis=1)]
 
-# EXAMPLE ac:
+# EXAMPLE 1c:
 df[df.apply(lambda row: row.str.contains('specific_string').any(), axis=1)]
 
+# ------ #
+# EXAMPLE 2:
+search_term = 'specific_string'
+df[df.isin([search_term]).any(axis=1)]
+
+# or # 
+df[df.isin(['specific_string']).any(axis=1)]
+
+# ------ #
+# EXAMPLE 
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
