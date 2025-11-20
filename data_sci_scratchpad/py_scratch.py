@@ -332,6 +332,21 @@ results_evm_df = find_regex_matches(df, pattern_evm_wallet)
 results_evm_df.to_csv('evm_wallet_matches.csv', index=False)
 
 # ----------------------------------------------------------------------------------------------- #
+# Several ways to find a specific string/term in a dataframe:
+
+# EXAMPLE 1a:
+search_term = 'specific_string'
+
+df[df.apply(lambda row: row.astype(str).str.contains(search_term, case=False).any(), axis=1)]
+
+# EXAMPLE 1b:
+df[df.apply(lambda row: row.str.contains(search_term).any(), axis=1)]
+
+# EXAMPLE ac:
+df[df.apply(lambda row: row.str.contains('specific_string').any(), axis=1)]
+
+
+# ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # Globbing-Globlins #
