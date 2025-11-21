@@ -364,6 +364,8 @@ df[df[mask.any(axis=1)]]
 filtered_df = df[mask.any(axis=1)]
 
 # e.g., ::
+abc_map = df.applymap(lambda x: 'abc' in str(x).lower())
+df[abc_map.any(axis=1)]
 
 
 
