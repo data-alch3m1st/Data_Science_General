@@ -356,6 +356,11 @@ df[df.isin(['specific_string']).any(axis=1)]
 
 # ------ #
 # EXAMPLE 3: Using a 'mask' to filter rows containing the search term:
+search_term = 'specific_string'
+mask - df.applymap(lambda x: search_term in str(x)).lower()
+df[df[mask.any(axis=1)]]
+
+# Can also psin up a masked df (from above):
 
 
 
