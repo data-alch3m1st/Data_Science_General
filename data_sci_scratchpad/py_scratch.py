@@ -354,7 +354,8 @@ df[df.isin([search_term]).any(axis=1)]
 df[df.isin(['specific_string']).any(axis=1)]
 
 # ------ #
-# EXAMPLE 
+# EXAMPLE 3:
+
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
@@ -380,7 +381,16 @@ combined_data.head(10)
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Recursive directory file searches for filenames (explicit, wildcard(s), numeric ranges;)
 
+import glob
+import os
+
+# For explicitly named files (e.g., a specific file):
+
+print('Named explicitly:')
+for name in glob.glob('/path/to/directory/specific_filename_2024.xlsx', recursive=True):
+    print(name)
 
 
 
