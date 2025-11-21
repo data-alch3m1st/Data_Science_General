@@ -334,6 +334,7 @@ results_evm_df.to_csv('evm_wallet_matches.csv', index=False)
 # ----------------------------------------------------------------------------------------------- #
 # Several ways to find a specific string/term in a dataframe:
 
+# EXAMPLE 1 (Multiple versions): Using 'lambda' and 'apply' to search across all columns in each row:
 # EXAMPLE 1a:
 search_term = 'specific_string'
 
@@ -346,7 +347,7 @@ df[df.apply(lambda row: row.str.contains(search_term).any(), axis=1)]
 df[df.apply(lambda row: row.str.contains('specific_string').any(), axis=1)]
 
 # ------ #
-# EXAMPLE 2:
+# EXAMPLE 2: Using 'isin' to check for exact matches across all columns in each row:
 search_term = 'specific_string'
 df[df.isin([search_term]).any(axis=1)]
 
@@ -354,7 +355,8 @@ df[df.isin([search_term]).any(axis=1)]
 df[df.isin(['specific_string']).any(axis=1)]
 
 # ------ #
-# EXAMPLE 3:
+# EXAMPLE 3: Using a 'mask' to filter rows containing the search term:
+
 
 
 # ----------------------------------------------------------------------------------------------- #
