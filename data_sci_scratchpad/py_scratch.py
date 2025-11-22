@@ -404,8 +404,10 @@ print('Named explicitly:')
 for name in glob.glob('/path/to/directory/specific_filename_2024.xlsx', recursive=True):
     print(name)
 
-
-
+# Greedy wildcards: {Using '*' pattern}
+print("Named with wildcards:")
+for name in glob.glob('./folder/*01*.*'): # (File agnostic) Example finds all files in the dir w/ '01' in the filename;
+    print(name)
 
 
 
