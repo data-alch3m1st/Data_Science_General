@@ -414,7 +414,25 @@ for name in glob.glob('./folder/*01*.*'): # (File agnostic) Example finds all fi
 for name in glob.glob('./jupyterNotebooks/**/*Voting*', recursive=True):
     print(name)
     
+# Now the same search but case insensitive:
+# Option 1 (still using glob only):
 
+# Option 2:
+from pathlib import Path
+
+root = Path('./jupyterNotebooks')
+pattern = 'Voting'.lower()
+
+for path in root.rglob('*'):
+    if pattern in path.name.lower():
+        print(path)
+
+
+
+import fnmatch
+for dirpath, dirnames, filenames in os.walk('./jupyterNotebooks/'):
+    for filename in fnmatch.filter(filenames, '*voting*'):
+        print(os.path.join(dirpath, filename))
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
