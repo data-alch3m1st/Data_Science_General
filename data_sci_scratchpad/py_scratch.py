@@ -416,6 +416,12 @@ for name in glob.glob('./jupyterNotebooks/**/*Voting*', recursive=True):
     
 # Now the same search but case insensitive:
 # Option 1 (still using glob only):
+import glob
+
+pattern = 'Voting'.lower()
+for name in glob.glob('./jupyterNotebooks/**/*Voting*', recursive=True):
+    if pattern in name.lower():
+        print(name)
 
 # Option 2:
 from pathlib import Path
