@@ -409,6 +409,11 @@ print("Named with wildcards:")
 for name in glob.glob('./folder/*01*.*'): # (File agnostic) Example finds all files in the dir w/ '01' in the filename;
     print(name)
 
+# Greedy wildcard, across directory tree (e.g., all folders recursively from 'jupyterNotebooks' down, for any file containting the term (string) 'Voting'):
+
+for name in glob.glob('./jupyterNotebooks/**/*Voting*', recursive=True):
+    print(name)
+    
 
 
 # ----------------------------------------------------------------------------------------------- #
