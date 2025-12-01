@@ -445,11 +445,15 @@ print("Named with single-character wildcard:")
 for name in glob.glob('./folder/file_?.txt'):  # Example finds files like 'file_A.txt', 'file_1.txt', etc.
     print(name)
     
-# Using numeric ranges with '[0-9]' pattern:
+# Using numeric ranges with '[0-9]' pattern (for numerics occurring anywhere in the filename):
 print("Named with numeric range wildcard:")
 for name in glob.glob('./folder/*[0-5]*,*'):  # Example finds files like 'file_0.txt' to 'file_5.txt'
     print(name)
     
+# Using numeric ranges with '[0-9]' pattern (for filenames ending with a numeric
+print("Name ending with numeric range wildcard:")
+for name in glob.glob('./folder/*[0-5].*'):  # Example finds files like 'file_0.txt' to 'file_5.txt'
+    print(name)
 
 
 # ----------------------------------------------------------------------------------------------- #
