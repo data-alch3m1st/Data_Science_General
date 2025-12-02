@@ -455,6 +455,12 @@ print("Name ending with numeric range wildcard:")
 for name in glob.glob('./folder/*[0-5].*'):  # Example finds files like 'file_0.txt' to 'file_5.txt'
     print(name)
 
+# Specific file extensions:
+# *e.g., all Jupyter Notebook files containing the word 'regression' in the filename, in the 'jupyter_notebooks_' directory on down:*
+for name in glob.glob('./jupyter_notebooks_/**/*regression*.ipynb', recursive=True):
+    print(name)
+    
+
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
