@@ -460,7 +460,10 @@ for name in glob.glob('./folder/*[0-5].*'):  # Example finds files like 'file_0.
 for name in glob.glob('./jupyter_notebooks_/**/*regression*.ipynb', recursive=True):
     print(name)
     
-
+# *e.g., all csv files containing the word 'analysis' in the filename, in the 'jupyter_notebooks_' directory on down:*
+for name in glob.glob('./jupyter_notebooks_/**/*analysis*.csv', recursive=True):
+    print(name)
+    
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
