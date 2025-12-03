@@ -482,6 +482,13 @@ from helper_scripts.t0rch_h3lp3r_0x01 import plot_training_curves
 
 # ----------------------------------------------------------------------------------------------- #
 
+# duckdb 
+import duckdb
+import pandas as pd
+import os
+import glob
+import sys
+# (and any others specific to the data, task, use-case, etc.)
 
 
 
