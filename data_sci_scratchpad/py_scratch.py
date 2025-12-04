@@ -490,7 +490,21 @@ import glob
 import sys
 # (and any others specific to the data, task, use-case, etc.)
 
+# Create a DuckDB connection (in-memory by default)
+conn = duckdb.connect()
 
+# Convert a large CSV file to Parquet format using DuckDB:
+conn.execute("""
+    COPY (
+        SELECT *
+        FROM read_csv_auto('large_file.csv')
+    ) TO 'large_file.parquet' (FORMAT 'parquet')
+""")
+
+print("Conversion complete!")
+
+
+# 
 
 # ----------------------------------------------------------------------------------------------- #
 
