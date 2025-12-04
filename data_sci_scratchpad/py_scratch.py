@@ -504,7 +504,12 @@ conn.execute("""
 print("Conversion complete!")
 
 
-# 
+# To view the first few rows of a Parquet file (just like a .head()) using DuckDB:
+duckdb.sql("""
+    SELECT *
+    FROM read_parquet('large_file.parquet')
+    LIMIT 5
+""").df()
 
 # ----------------------------------------------------------------------------------------------- #
 
