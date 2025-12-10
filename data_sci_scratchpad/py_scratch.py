@@ -513,8 +513,12 @@ duckdb.sql("""
 
 # Can also run dataframe queries directly using DuckDB (+ '.df()'):
 
+duckdb.sql("""
+    SELECT * FROM read_parquet('large_file.parquet') LIMIT 5
+""").df().shape
 
 
+# Miscellaneous DuckDB query example (group by, avg, where, order by):
 duckdb.sql("""
     SELECT column1, column2, AVG(column3) AS avg_col3
     FROM df
