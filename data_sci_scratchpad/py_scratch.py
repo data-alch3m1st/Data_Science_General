@@ -511,6 +511,18 @@ duckdb.sql("""
     LIMIT 5
 """).df()
 
+# Can also run dataframe queries directly using DuckDB (+ '.df()'):
+
+
+
+duckdb.sql("""
+    SELECT column1, column2, AVG(column3) AS avg_col3
+    FROM df
+    WHERE column4 > 100
+    GROUP BY column1, column2
+    ORDER BY avg_col3 DESC
+""").df()
+
 # ----------------------------------------------------------------------------------------------- #
 
 
