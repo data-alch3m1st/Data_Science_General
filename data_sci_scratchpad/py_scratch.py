@@ -560,7 +560,16 @@ duckdb.sql("""
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Statistical Related good-to-know code...
 
+# Highlighted Pearson Correlation matrix (with self correlations removed;) --> THE EASY WAY!!! 
+
+df.corr(numeric_only=True, method='pearson')\
+    .replace(1.0, np.nan)\ # Remove self-correlations
+    .style\ # Only need to call the Styler object once (not before each 'highlight_...' method)
+    .highlight_max(color='green')\
+    .highlight_min(color='red')\
+    .format("{:.4f}")
 
 
 # ----------------------------------------------------------------------------------------------- #
