@@ -565,12 +565,22 @@ duckdb.sql("""
 # Highlighted Pearson Correlation matrix (with self correlations removed;) --> THE EASY WAY!!! 
 
 df.corr(numeric_only=True, method='pearson')\
-    .replace(1.0, np.nan)\ # Remove self-correlations
-    .style\ # Only need to call the Styler object once (not before each 'highlight_...' method)
+    .replace(1.0, np.nan)\
+    .style\
     .highlight_max(color='green')\
     .highlight_min(color='red')\
     .format("{:.4f}")
 
+#  ^^^ Remove self-correlations; Only need to call the Styler object once (not before each 'highlight_...' method);
+
+# For Spearman Correlation (*Spearman Corr is ideal for Time Series Analysis;)
+
+df.corr(numeric_only=True, method='spearman')\
+    .replace(1.0, np.nan)\
+    .style\
+    .highlight_max(color='green')\
+    .highlight_min(color='red')\
+    .format("{:.4f}")
 
 # ----------------------------------------------------------------------------------------------- #
 
