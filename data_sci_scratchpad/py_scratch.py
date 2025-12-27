@@ -138,6 +138,16 @@ def convert_columns_to_int64(df, columns):
 convert_columns_to_int64(df, ['blockNumber', 'transactionIndex', 'gasUsed', 'gasPrice', 'cumulativeGasUsed', 'confirmations'])
 print(df.info())
 df.head(3)
+
+# Simple string representation of int change to int (e.g., remove the ',' and convert to int):
+
+# Remove commas from the "y" column and convert it to integer type
+# Keep the exact behavior as in your notebook
+# df['y'].str.replace(',', '').astype(int)  # alternative kept as a comment
+
+df["y"] = df["y"].str.replace(",", "").astype(int)
+df.head()
+
 # ----------------------------------------------------------------------------------------------- #
 
 # Hex conversions!
