@@ -493,11 +493,15 @@ gc.collect()  # Force garbage collection to free up memory
 
 ### GROUPBY Ops ###
 
-# Single groupby:
+# Single groupby(s):
 
+# Simple= 1-col w/ calc:
 df_grp = df.groupby('datetime')['volume'].sum().to_frame().sort_values('datetime', ascending=True).reset_index()
 df_grp.head(3)
 
+# Simple= 2-col w/ calc:
+df_grp = df.groupby('datetime')['volume', 'count'].sum().to_frame().sort_values('datetime', ascending=True).reset_index()
+df_grp.head(3)
 
 
 # ----------------------------------------------------------------------------------------------- #
