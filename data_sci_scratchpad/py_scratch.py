@@ -646,6 +646,6 @@ ax2.set_title("Quarter Plot – Median")
 ax1.set_ylabel("y")
 
 plt.tight_layout()
-plt.show()
+plt.show();
 
 # ----------------------------------------------------------------------------------------------- #
