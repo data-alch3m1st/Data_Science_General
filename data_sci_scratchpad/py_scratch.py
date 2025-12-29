@@ -631,4 +631,22 @@ plt.tight_layout()
 plt.show();
 
 
+# Now here with from statsmodels.graphics.tsaplots 'quarter_plot'(s):
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
+
+# Quarter plots
+quarter_plot(df['y'].resample('QE').mean(), ax=ax1)
+quarter_plot(df['y'].resample('QE').median(), ax=ax2)
+
+# Titles
+ax1.set_title("Quarter Plot – Mean")
+ax2.set_title("Quarter Plot – Median")
+
+# Y-axis label (shared)
+ax1.set_ylabel("y")
+
+plt.tight_layout()
+plt.show()
+
 # ----------------------------------------------------------------------------------------------- #
