@@ -604,7 +604,31 @@ df.corr(numeric_only=True, method='spearman')\
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Plotting (evil)...#
 
+# Create side-by-side subplots with shared y-axis
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5), sharey=True)
+
+# Box plots
+ax1.boxplot(df1["price"], vert=True)
+ax2.boxplot(df2["price"], vert=True)
+
+# Titles
+ax1.set_title("DF1 Box Plot")
+ax2.set_title("DF2 Box Plot")
+
+# Y-axis label (only needed once when shared)
+ax1.set_ylabel("Price")
+
+# Force 9 decimal places and disable scientific notation
+formatter = mticker.FormatStrFormatter('%.9f')
+ax1.yaxis.set_major_formatter(formatter)
+
+# Optional: rotate y tick labels slightly if crowded
+plt.setp(ax1.get_yticklabels(), rotation=0)
+
+plt.tight_layout()
+plt.show();
 
 
 # ----------------------------------------------------------------------------------------------- #
