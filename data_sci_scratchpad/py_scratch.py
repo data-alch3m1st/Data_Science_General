@@ -632,7 +632,6 @@ plt.show();
 
 
 # Now here with from statsmodels.graphics.tsaplots 'quarter_plot'(s):
-
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 6))
 
 # Quarter plots
