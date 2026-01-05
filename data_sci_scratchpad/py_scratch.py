@@ -510,15 +510,18 @@ df_grp = df.groupby('datetime')['volume'].sum().to_frame().sort_values('datetime
 df_grp.head(3)
 
 # Simple= 2-col w/ calc:
-df_grp = df.groupby('datetime')['volume', 'count'].sum().to_frame().sort_values('datetime', ascending=True).reset_index()
+df_grp = df.groupby('datetime')['volume', 'count']\
+            .sum()\
+                .to_frame()\
+                    .sort_values('datetime', ascending=True).reset_index()
 df_grp.head(3)
 
 
 # Real-world example:
 df_grp = df.groupby('Address')['Amount_USD'].sum()\
-    .to_frame()\
-        .sort_values('Amount_USD', ascending=False)\
-            .reset_index()
+            .to_frame()\
+                .sort_values('Amount_USD', ascending=False)\
+                    .reset_index()
 
 
 # ----------------------------------------------------------------------------------------------- #
