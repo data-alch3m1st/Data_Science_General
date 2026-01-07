@@ -403,6 +403,16 @@ df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms), cas
 df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms)).any(), axis=1)]
 
 
+search_terms = ['abc', 'def', 'xyz']
+df[df.isin(search_terms).any(axis=1)]
+
+# EXAMPLE 3: Using a mask to filter rows containing any of the search terms
+search_terms = ['abc', 'def', 'xyz']
+mask = df.applymap(lambda x: any(term in str(x).lower() for term in search_terms))
+df[mask.any(axis=1)]
+
+
+
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
