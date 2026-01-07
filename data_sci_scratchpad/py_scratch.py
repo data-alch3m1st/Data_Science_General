@@ -400,7 +400,9 @@ search_terms = ['abc', 'def', 'xyz']
 df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms), case=False).any(), axis=1)]
 
 # EXAMPLE 1b: Case-sensitive search
-df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms)).any(), axis=1)]
+df[df.apply(lambda row: row.astype(str)\
+    .str.contains('|'.join(search_terms))\
+        .any(), axis=1)]
 
 # EXAMPLE 2: Using isin to check for exact matches for any of multiple strings
 search_terms = ['abc', 'def', 'xyz']
@@ -415,7 +417,8 @@ df[mask.any(axis=1)]
 # BONUS EXAMPLE: Using regex for more complex pattern matching
 search_terms = ['abc', 'def', 'xyz']
 pattern = '|'.join(search_terms)
-df[df.apply(lambda row: row.astype(str).str.contains(pattern, case=False).any(), axis=1)]
+df[df.apply(lambda row: row.astype(str).str.contains(
+    pattern, case=False).any(), axis=1)]
 
 
 # BONUS EXAMPLE 2: Using numpy for logical OR across columns (efficient for large DataFrames)
