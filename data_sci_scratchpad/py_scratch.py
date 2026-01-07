@@ -394,6 +394,15 @@ df[abc_map.any(axis=1)]
 
 # NEED TO ADD IN THE MULTI-TERM SEARCH;
 
+search_terms = ['abc', 'def', 'xyz']
+
+# EXAMPLE 1a: Case-insensitive search
+df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms), case=False).any(), axis=1)]
+
+# EXAMPLE 1b: Case-sensitive search
+df[df.apply(lambda row: row.astype(str).str.contains('|'.join(search_terms)).any(), axis=1)]
+
+
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
