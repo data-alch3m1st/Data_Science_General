@@ -419,8 +419,8 @@ df[mask.any(axis=1)]
 # BONUS EXAMPLE: Using regex for more complex pattern matching
 search_terms = ['abc', 'def', 'xyz']
 pattern = '|'.join(search_terms)
-df[df.apply(lambda row: row.astype(str).str.contains(
-    pattern, case=False).any(), axis=1)]
+df[df.apply(lambda row: row.astype(str)\
+    .str.contains(pattern, case=False).any(), axis=1)]
 
 
 # BONUS EXAMPLE 2: Using numpy for logical OR across columns (efficient for large DataFrames)
