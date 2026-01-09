@@ -216,7 +216,8 @@ df2 = df.replace(to_replace=[None], value=np.nan).dropna()
 df['instrument'] = df['symbol'].str.replace(
     r'([a-z]+)(usd|usdt)'
     , r'\1-\2'
-    , regex=True)
+    , regex=True
+    )
 
 
 # ----------------------------------------------------------------------------------------------- #
