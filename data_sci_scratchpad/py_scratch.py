@@ -211,6 +211,13 @@ df['column_name'].isnull().any()
 # dropnas
 df2 = df.replace(to_replace=[None], value=np.nan).dropna()
 
+# Assuming your DataFrame is named 'df'
+# Insert a '-' between the base and quote currency in the 'symbol' column
+df['instrument'] = df['symbol'].str.replace(
+    r'([a-z]+)(usd|usdt)'
+    , r'\1-\2'
+    , regex=True)
+
 
 # ----------------------------------------------------------------------------------------------- #
 # Non-statistical normalization of strings (e.g., column names):
