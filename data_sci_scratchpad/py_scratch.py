@@ -201,7 +201,10 @@ df['blockNumber_int'] = df['blockNumber'].apply(hex_to_int)
 df.drop(['Unnamed: 0'], axis=1, inplace=True)  # Drop a column
 
 # If excessive values in a col are 'NaN' and this makes them irrelevant, can drop the rows with NaN in that col:
-df.dropna(subset=['column_name'], inplace=True)  # Drop rows with NaN in 'column_name'
+df.dropna(
+    subset=['column_name']
+    , inplace=True
+    )  # Drop rows with NaN in 'column_name'
 
 # Check for NaNs remaining:
 df['column_name'].isna().any()
