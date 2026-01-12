@@ -711,4 +711,30 @@ ax1.set_ylabel("y")
 plt.tight_layout()
 plt.show();
 
-# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- # When working w/ dt data and need to run a groupby but aggregating by a shorter/longer timeframe
+
+# (e.g.) OHLCVWAP date on a 1min scale, but you need an hourly or daily mean (or just need it organized better):
+# Tip: Easier to groupby w/ dt data when dt vals NOT index; (reset_index() if they are!)
+# Example 1: Simple groupby on dt for hourly:
+df_grp = df.groupby(df['datetime'].dt. floor('H"))['price'].mean().to_frame()
+
+df _grp
+# Example 2: More complex agg groupby data w/ mean price and sum volume by hour:
+df _grp = df-groupby(df['datetime'].dt. floor('H"))l'price', 'volume'] agg(f'price': "mean',
+"volume': ' sum'})
+df_grp2
+# NOTE: the 'dt.floor' can also be applied in plotting:
+fig_ box_d = px.box(df
+, x=df[ 'datetime'].dt.floor('D') # For the boxplot, converting out to 'D" , y='price'
+color _discrete_sequence=['green']
+width=900, height=700
+fig box_ d.show
+# Can also use numerical values (e.g. '4H', '2H', '24H', '2D', etc.)
+px.box(df
+, x=df[ 'datetime'] -dt. floor('4H')
+, y='price'
+color_discrete_sequence=[ 'green' ] width=1200, height=700
+#
+#
+#
+# UNZIPPING MULTIPLE GZ (GUNZIP) FILES IN THE SAME DIRECTORY:
