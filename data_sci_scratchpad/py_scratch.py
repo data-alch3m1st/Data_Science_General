@@ -446,6 +446,15 @@ mask = np.column_stack([
 df[mask.any(axis=1)]
 
 
+# SPECIFIC EXAMPLES:
+
+# Find all rows where 'transaction_hash' col contains the any transaction hashes from a list:
+
+
+hashes_for_search = ['0xabc123...', '0xdef456...', '0xghi789...']  # Example list of transaction hashes
+df[df['transaction_hash'].isin(hashes_for_search)]
+
+
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
