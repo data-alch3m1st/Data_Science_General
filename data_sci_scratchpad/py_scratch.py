@@ -451,13 +451,11 @@ df[mask.any(axis=1)]
 # Find all rows where 'transaction_hash' col contains the any transaction hashes from a list:
 
 # Simple list search (case sensitive!):
-
 hashes_for_search = ['0xabc123...', '0xdef456...', '0xghi789...']  # Example list of transaction hashes
 df[df['transaction_hash'].isin(hashes_for_search)]
 
 
 # Case insensitive option (IDEAL OPTION GIVEN UNPREDICTABLE DATA CASES FORMAT):
-
 hashes_for_search_lower = [h.lower() for h in [
     '0xabc123...' , '0xdef456...', '0xghi789...']
                            ]  
@@ -465,7 +463,11 @@ hashes_for_search_lower = [h.lower() for h in [
 df[df['transaction_hash'].isin(hashes_for_search)]
 
 
+# Same as above but w/ wrapped var in lower:
+hashes_for_search = ['0xabc123...', '0xdef456...', '0xghi789...']  # Example list of transaction hashes
+hashes_for_search_lower = [h.lower() for h in hashes_for_search]
 
+df[df['transaction_hash'].str.lower().isin(hashes_for_search_lower)]
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
