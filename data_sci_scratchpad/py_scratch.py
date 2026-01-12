@@ -718,17 +718,16 @@ plt.show();
 # Example 1: Simple groupby on dt for hourly:
 df_grp = df.groupby(df['datetime'].dt. floor('H"))['price'].mean().to_frame()
 
-df _grp
+df_grp
 # Example 2: More complex agg groupby data w/ mean price and sum volume by hour:
-df _grp = df-groupby(df['datetime'].dt. floor('H"))l'price', 'volume'] agg(f'price': "mean',
-"volume': ' sum'})
+df_grp2 = df.groupby(df['datetime'].dt. floor('H"))['price', 'volume'].agg({'price': "mean', "volume': 'sum'})
 df_grp2
 # NOTE: the 'dt.floor' can also be applied in plotting:
-fig_ box_d = px.box(df
-, x=df[ 'datetime'].dt.floor('D') # For the boxplot, converting out to 'D" , y='price'
+fig_box_d = px.box(df
+, x=df['datetime'].dt.floor('D') # For the boxplot, converting out to 'D" , y='price'
 color _discrete_sequence=['green']
 width=900, height=700
-fig box_ d.show
+fig_box_d.show()
 # Can also use numerical values (e.g. '4H', '2H', '24H', '2D', etc.)
 px.box(df
 , x=df[ 'datetime'] -dt. floor('4H')
