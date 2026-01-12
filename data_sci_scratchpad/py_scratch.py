@@ -450,9 +450,12 @@ df[mask.any(axis=1)]
 
 # Find all rows where 'transaction_hash' col contains the any transaction hashes from a list:
 
+# Simple list search (case sensitive!):
 
 hashes_for_search = ['0xabc123...', '0xdef456...', '0xghi789...']  # Example list of transaction hashes
 df[df['transaction_hash'].isin(hashes_for_search)]
+
+
 
 
 # ----------------------------------------------------------------------------------------------- #
