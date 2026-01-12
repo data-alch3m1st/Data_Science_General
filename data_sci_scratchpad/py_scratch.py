@@ -456,6 +456,15 @@ hashes_for_search = ['0xabc123...', '0xdef456...', '0xghi789...']  # Example lis
 df[df['transaction_hash'].isin(hashes_for_search)]
 
 
+# Case insensitive option (IDEAL OPTION GIVEN UNPREDICTABLE DATA CASES FORMAT):
+
+hashes_for_search_lower = [h.lower() for h in [
+    '0xabc123...' , '0xdef456...', '0xghi789...']
+                           ]  
+
+df[df['transaction_hash'].isin(hashes_for_search)]
+
+
 
 
 # ----------------------------------------------------------------------------------------------- #
