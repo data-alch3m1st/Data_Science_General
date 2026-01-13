@@ -332,6 +332,13 @@ for filename in os.listdir(folder_path):
             
             # Append the dataframe to the list:
             dataframes.append(df)   
+            
+# Concatenate all dataframes into a single dataframe:
+combined_df = pd.concat(dataframes, ignore_index=True)
+
+print(combined_df.shape)
+print(combined_df.info())
+combined_df.head(3)
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
