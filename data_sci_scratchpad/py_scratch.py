@@ -310,6 +310,13 @@ df.rename(
 
 # Ingesting a directory full of .json files and appending into a giant dataframe:
 
+import os
+import pandas as pd
+import json
+
+# Set the folder PATH where the JSON files are located:
+folder_path = './input/json_api_data/'
+
 
 
 # ----------------------------------------------------------------------------------------------- #
