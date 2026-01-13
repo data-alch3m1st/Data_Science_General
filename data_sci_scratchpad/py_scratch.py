@@ -308,6 +308,16 @@ df.rename(
 
 # ----------------------------------------------------------------------------------------------- #
 
+# Ingesting a directory full of .json files and appending into a giant dataframe:
+
+
+
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
+# ----------------------------------------------------------------------------------------------- #
+
+# JSON OPS #
+
 # mapping to json (specifically for Kaiko data w/ dictionary of exchange names and their codes saved as 'exch_dict_all.json'):
 
 import json
