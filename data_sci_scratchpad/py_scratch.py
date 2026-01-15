@@ -811,6 +811,8 @@ for filename in os.listdir(directory):
         
         # Create the filepath:
         gz_file_path = os.path.join(directory, filename)
+        
+        # Define the output file path (removing the .gz extension by removing last 3 chars):
         output_file_path = os.path.join(directory, filename[:-3])  # Remove .gz extension
         
         with gzip.open(gz_file_path, 'rb') as f_in:
