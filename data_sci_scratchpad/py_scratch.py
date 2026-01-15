@@ -804,5 +804,18 @@ import gzip
 import shutil
 
 # Define the directory containing the .gz files:
+directory = './data/gz_files/'
 
+for filename in os.listdir(directory):
+    if filename.endswith('.gz'):
+        
+        # Create the filepath:
+        gz_file_path = os.path.join(directory, filename)
+        output_file_path = os.path.join(directory, filename[:-3])  # Remove .gz extension
+        
+        with gzip.open(gz_file_path, 'rb') as f_in:
+            with open(output_file_path, 'wb') as f_out:
+                shutil.copyfileobj(f_in, f_out)
+        
+        print(f'Unzipped: {filename} to {output_file_path}')
 
