@@ -824,7 +824,10 @@ for filename in os.listdir(directory):
    
 # COMBINE THESE SAME NEWLY UNZIPPED FILES INTO A SINGLE DATAFRAME! (All .csv in a dir):
 
-  
+# Define the directory containing the CSV files:
+directory = './data/gz_files/'
+
+
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
