@@ -815,6 +815,7 @@ for filename in os.listdir(directory):
         # Define the output file path (removing the .gz extension by removing last 3 chars):
         output_file_path = os.path.join(directory, filename[:-3])  # Remove .gz extension
         
+        # Unzip the actual files:
         with gzip.open(gz_file_path, 'rb') as f_in:
             with open(output_file_path, 'wb') as f_out:
                 shutil.copyfileobj(f_in, f_out)
