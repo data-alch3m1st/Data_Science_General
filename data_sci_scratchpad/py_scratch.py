@@ -798,3 +798,11 @@ color_discrete_sequence=[ 'green' ] width=1200, height=700
 #
 #
 # UNZIPPING MULTIPLE GZ (GUNZIP) FILES IN THE SAME DIRECTORY:
+
+import os
+import gzip
+import shutil
+
+# Define the directory containing the .gz files:
+
+
