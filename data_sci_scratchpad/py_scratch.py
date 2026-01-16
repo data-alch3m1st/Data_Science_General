@@ -845,7 +845,7 @@ for filename in os.listdir(directory):
 combined_df = pd.concat(dataframes, ignore_index=True)
 
 print(combined_df.info())
-combn
+combined_df.head(3)
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
