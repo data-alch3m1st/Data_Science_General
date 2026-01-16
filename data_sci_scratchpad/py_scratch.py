@@ -827,6 +827,7 @@ for filename in os.listdir(directory):
 # Define the directory containing the CSV files:
 directory = './data/gz_files/'
 
+# Loop through all the files in the dir:
 
 
 # ----------------------------------------------------------------------------------------------- #
