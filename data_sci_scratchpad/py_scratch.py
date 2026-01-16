@@ -829,7 +829,8 @@ for filename in os.listdir(directory):
 # Define the directory containing the CSV files:
 directory = './data/gz_files/'
 
-# Set 
+# Set up an empty list to hold the dataframes:
+dataframes = []
 
 # Loop through all the files in the dir:
 for filename in os.listdir(directory):
@@ -839,7 +840,12 @@ for filename in os.listdir(directory):
         csv_file_path = os.path.join(directory, filename)
         
         # Read each CSV into a dataframe and append to a list:
-        df_list.append(pd.read_csv(csv_file_path))
+        dataframes.append(pd.read_csv(csv_file_path))
+        
+combined_df = pd.concat(dataframes, ignore_index=True)
+
+print(combined_df.info())
+combn
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
