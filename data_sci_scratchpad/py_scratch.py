@@ -822,13 +822,24 @@ for filename in os.listdir(directory):
         
         print(f'Unzipped: {filename} to {output_file_path}')
    
+# ....................................................................................... #
+   
 # COMBINE THESE SAME NEWLY UNZIPPED FILES INTO A SINGLE DATAFRAME! (All .csv in a dir):
 
 # Define the directory containing the CSV files:
 directory = './data/gz_files/'
 
-# Loop through all the files in the dir:
+# Set 
 
+# Loop through all the files in the dir:
+for filename in os.listdir(directory):
+    if filename.endswith('.csv'):
+        
+        # Create the filepath:
+        csv_file_path = os.path.join(directory, filename)
+        
+        # Read each CSV into a dataframe and append to a list:
+        df_list.append(pd.read_csv(csv_file_path))
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
