@@ -652,12 +652,12 @@ df_sales.groupby('activity').agg(
 # Similar principle, but for multiple columns (e.g., related data; (sales & age);):
 
 
-df_sales.groupby('activity').agg(
-    mean_sales=('sale_amount', 'mean')
-    , median_sales=('sale_amount', 'median')
-    , mean_age=('age', 'mean')
-    , max_age=('age', 'max')
-    )
+df_sales.groupby('activity')\
+    .agg(mean_sales=('sale_amount', 'mean')
+         , median_sales=('sale_amount', 'median')
+         , mean_age=('age', 'mean')
+         , max_age=('age', 'max')
+         )
 
 
 
