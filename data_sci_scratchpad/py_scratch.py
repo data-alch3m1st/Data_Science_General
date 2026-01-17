@@ -638,6 +638,17 @@ df_grp = df.groupby('Address')['Amount_USD'].sum()\
                     .reset_index()
 
 
+# Nice groupby().agg() that tabulates the key points of what is found in 'describe()':
+
+df_sales.groupby('activity').agg(
+    mean_sales=('sale_amount', 'mean')
+    , median_sales=('sale_amount', 'median')
+    , max_sales=('sale_amount', 'max')
+    , min_sales=('sale_amount', 'min')
+    , total_sales=('sale_amount', 'sum')
+    , count_sales=('sale_amount', 'count')
+    )
+
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
