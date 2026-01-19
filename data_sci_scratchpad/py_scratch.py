@@ -222,6 +222,10 @@ df['instrument'] = df['symbol'].str.replace(
     , regex=True
     )
 
+# Adding a column (to a financial dataset) showing direction of flow of funds (e.g., 'IN' vs. 'OUT'):
+
+
+
 
 # ----------------------------------------------------------------------------------------------- #
 # Non-statistical normalization of strings (e.g., column names):
