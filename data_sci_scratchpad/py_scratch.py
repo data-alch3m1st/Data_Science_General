@@ -224,7 +224,8 @@ df['instrument'] = df['symbol'].str.replace(
 
 # Adding a column (to a financial dataset) showing direction of flow of funds (e.g., 'IN' vs. 'OUT'):
 
-
+# Simple direction col based on positive vs. negative amt:
+df['direction'] = df['amount'].apply(lambda x: 'OUT' if x < 0 else 'IN')
 
 
 # ----------------------------------------------------------------------------------------------- #
