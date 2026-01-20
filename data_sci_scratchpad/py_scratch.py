@@ -691,6 +691,10 @@ grouped_df = df.groupby(['datetime']).agg(
     , average_price=('price', 'mean')   # Mean of price
     )
 
+# Then reset the index back to DateTimeIndex:
+grouped_df = grouped_df.reset_index()\
+    .set_index('datetime')\
+        .sort_index(ascending=True)
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
