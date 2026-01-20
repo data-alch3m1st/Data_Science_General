@@ -675,6 +675,9 @@ df_sales.groupby('UrbanRural')\
          )
 
 
+# A more complex example with multiple aggs on multiple columns:
+
+# EXAMPLE: Combines two diff't types of groupbys for two diff't calcs:
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
