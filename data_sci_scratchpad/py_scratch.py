@@ -683,7 +683,13 @@ e.g., agg groupby to sum 'volume' and calc mean for 'price'; theoretical example
 '''
 
 # First, reset the index so datetime is a column again (this makes things easier for groupby):
+df = df.reset_index()
 
+# Then do the groupby operation:
+grouped_df = df.groupby(['datetime']).agg(
+    total_volume=('volume', 'sum') # Sum of volume
+    , average_price=('price', 'mean')   # Mean of price
+    )
 
 
 # ----------------------------------------------------------------------------------------------- #
