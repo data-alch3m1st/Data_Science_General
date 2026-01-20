@@ -678,6 +678,13 @@ df_sales.groupby('UrbanRural')\
 # A more complex example with multiple aggs on multiple columns:
 
 # EXAMPLE: Combines two diff't types of groupbys for two diff't calcs:
+'''
+e.g., agg groupby to sum 'volume' and calc mean for 'price'; theoretical example is a Kaiko OHLCV-VWAP data for all exchanges for a token for duration of project;
+'''
+
+# First, reset the index so datetime is a column again (this makes things easier for groupby):
+
+
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
