@@ -695,6 +695,9 @@ grouped_df = df.groupby(['datetime']).agg(
 grouped_df = grouped_df.reset_index()\
     .set_index('datetime')\
         .sort_index(ascending=True)
+        
+print(grouped_df.info())
+grouped_df.head(3)
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
