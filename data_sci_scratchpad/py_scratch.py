@@ -705,10 +705,14 @@ grouped_df.head(3)
 # Example 2: Groupby with multiple agg's on the SAME column:
 
 # Example 2a (simple—one col with two agg calcs):
-grouped_df = df.groupby('tenure').agg({'age': ['mean', 'std']})
+grouped_df = df.groupby('tenure').agg(
+    {'age': ['mean', 'std']})
 
 # Example 2b (more complex—two cols with multiple agg calcs):
-grouped_df = df.groupby('tenure').agg({'age': ['mean', 'min', 'max', 'std'], 'salary': ['mean', 'sum', 'count']})
+grouped_df = df.groupby('tenure').agg(
+    {'age': ['mean', 'min', 'max', 'std']
+     , 'salary': ['mean', 'sum', 'count']
+     })
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
