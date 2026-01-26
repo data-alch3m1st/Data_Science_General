@@ -675,6 +675,8 @@ df_sales.groupby('UrbanRural')\
          )
 
 
+
+
 # A more complex example with multiple aggs on multiple columns:
 
 # EXAMPLE: Combines two diff't types of groupbys for two diff't calcs:
@@ -698,6 +700,15 @@ grouped_df = grouped_df.reset_index()\
         
 print(grouped_df.info())
 grouped_df.head(3)
+
+
+# Example 2: Groupby with multiple agg's on the SAME column:
+
+# Example 2a (simple—)
+grouped_df = df.groupby('tenure').agg({'age': ['mean', 'std']})
+
+
+grouped_df = df.groupby('tenure').agg({'age': ['mean', 'min', 'max', 'std'], 'salary': ['mean', 'sum', 'count']})
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
