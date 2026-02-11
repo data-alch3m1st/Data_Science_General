@@ -369,6 +369,12 @@ df.head(3)
 # Traditional URL-based API pull and data fetch, parse, output clean dataframe:
 
 
+# Coingecko API (w/ pycoingecko library;)
+
+
+
+
+
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
