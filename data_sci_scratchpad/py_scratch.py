@@ -371,8 +371,11 @@ df.head(3)
 
 # Coingecko API (w/ pycoingecko library;)
 
+from pycoingecko import CoinGeckoAPI
 
+api_key_ = # Your CoinGecko API key here (if you have one; optional for basic usage, but recommended for higher rate limits and more features)
 
+cg = CoinGeckoAPI(api_key=api_key_) # Initialize the API client with your API key
 
 
 
