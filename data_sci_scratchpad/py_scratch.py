@@ -377,7 +377,10 @@ api_key_ = # Your CoinGecko API key here (if you have one; optional for basic us
 
 cg = CoinGeckoAPI(api_key=api_key_) # Initialize the API client with your API key
 
-
+data = cg.get_coin_market_chart_by_id(
+    id='thugg-token' # Fake example
+    , vs_currency='usd'
+    , days=30)  # Example: Get Bitcoin market data for the last 30 days    
 
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
