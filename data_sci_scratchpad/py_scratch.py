@@ -946,3 +946,35 @@ combined_df.head(3)
 # ----------------------------------------------------------------------------------------------- #
 # ----------------------------------------------------------------------------------------------- #
 
+# export multiple dataframes (all named with the prefix 'df_' to CSV files:
+
+from pathlib import Path
+import pandas as pd
+
+# Create output directory
+output_dir = Path("dataframe_dump")
+output_dir.mkdir(
+    parents=True
+    , exist_ok=True
+)
+
+# Find all variables that start with 'df_' and are pandas DataFrames
+df_dict = {
+    name: obj
+    for name, obj in globals().items()
+    if name.startswith("df_") and isinstance(obj, pd.DataFrame)
+}
+
+# Export each dataframe to CSV
+for name, df in df_dict.items():
+    file_path = output_dir / f"{name}.csv"
+    
+    df.to_csv(
+        file_path
+        , index=False
+    )
+
+print(f"Exported {len(df_dict)} dataframes to: {output_dir.resolve()}")
+
+# Optional: show which dataframes were exported
+sorted(df_dict.keys())
