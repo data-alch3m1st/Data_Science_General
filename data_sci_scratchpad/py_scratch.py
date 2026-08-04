@@ -978,3 +978,86 @@ print(f"Exported {len(df_dict)} dataframes to: {output_dir.resolve()}")
 
 # Optional: show which dataframes were exported
 sorted(df_dict.keys())
+
+# ======================================================== #
+
+# Universal dataframe inventory and inspection function
+
+def inspect_dataframes(
+    prefix=None
+    , preview_rows=None
+):
+    dataframe_items = sorted(
+        [
+            (name, obj)
+            for name, obj in globals().items()
+            if (
+                isinstance(
+                    obj
+                    , pd.DataFrame
+                )
+                and (
+                    prefix is None
+                    or name.startswith(
+                        prefix
+                    )
+                )
+            )
+        ]
+    )
+    
+    dataframe_inventory = pd.DataFrame(
+        [
+            {
+                "dataframe_name": name
+                , "rows": dataframe.shape[0]
+                , "columns": dataframe.shape[1]
+                , "shape": str(dataframe.shape)
+                , "memory_mb": (dataframe.memory_usage(
+                    index=True
+                    , deep=True
+                    ).sum() / 1024**2
+                )
+            }
+            for name, dataframe in dataframe_items])
+    
+    if not dataframe_inventory.empty:
+        dataframe_inventory["memory_mb"] = (
+            dataframe_inventory["memory_mb"].round(3)
+            )
+    
+    display(dataframe_inventory)
+    
+    if preview_rows is not None:
+        for name, dataframe in dataframe_items:
+            print(f"\n{name}: {dataframe.shape}")
+            
+            if preview_rows == "all":
+                display(dataframe)
+            else:
+                display(dataframe.head(preview_rows)
+                )
+    
+    return dataframe_inventory
+
+# ^^^ USAGE:
+
+# Inventory of durable df_ dataframes
+df_inventory = inspect_dataframes(
+    prefix="df_"
+)
+
+# Inventory of temporary x_ dataframes
+x_df_inventory = inspect_dataframes(
+    prefix="x_"
+)
+
+# Inventory of every dataframe currently in memory
+all_df_inventory = inspect_dataframes()
+
+# Inventory plus five-row previews
+df_inventory = inspect_dataframes(
+    prefix="df_"
+    , preview_rows=5
+)
+
