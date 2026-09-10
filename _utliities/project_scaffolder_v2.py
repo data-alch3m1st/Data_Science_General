@@ -44,6 +44,13 @@ PRESETS = {
         "src",
         "output",
     ],
+    "standard_wkg": [
+        "input",
+        "output",
+        "analysis",
+        "archive",
+        "preservation"
+    ],
 }
 
 GITIGNORE_TEMPLATE = """# Data & models
